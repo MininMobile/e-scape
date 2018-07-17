@@ -4,11 +4,37 @@ let inf = document.getElementById("in");
 let inl = document.getElementById("path");
 
 let chistory = [];
+let historyi = -1;
 
-document.body.onclick = (e) => inf.focus();
+document.onclick = (e) => inf.focus();
+
+document.onkeydown = (e) => {
+	if (historyi == -1)  historyi = chistory.length;
+
+	if (e.keyCode == 38) {
+		historyi--;
+		
+		if (chistory[historyi] != undefined) {
+			inf.value = chistory[historyi];
+		} else {
+			historyi = -1;
+			inf.value = "";
+		}
+	} else if (e.keyCode == 40) {
+		historyi++;
+		
+		if (chistory[historyi] != undefined) {
+			inf.value = chistory[historyi];
+		} else {
+			historyi = -1;
+			inf.value = "";
+		}
+	}
+}
 
 inp.onsubmit = (e) => {
 	chistory.push(inf.value);
+	historyi = -1;
 
 	let args = inf.value.split(" ");
 	let output = "";
