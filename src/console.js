@@ -83,6 +83,8 @@ inp.onsubmit = (e) => {
 
 	out.innerHTML += `<p>${output}</p><br/>`;
 
+	scroll(0, window.innerHeight);
+
 	return false;
 }
 
