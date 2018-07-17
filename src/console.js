@@ -54,16 +54,16 @@ inp.onsubmit = (e) => {
 		case "newp":
 			let id = 0;
 
-			while (Object.keys(processes).includes(id)) {
+			while (Object.keys(processes).includes(`${id}`)) {
 				id = utilRINT(0, 255);
 			}
 
-			process[id] = new Process();
+			processes[id] = new Process();
 			break;
 
 		case "ps":
 			Object.keys(processes).forEach((p) => {
-				output += `${p} | ${processes[p].name} | ${processes[p].description}</p><p>`;
+				output += `${p} | ${processes[p].name} | ${processes[p].desc}</p><p>`;
 			});
 
 			output += `${Object.keys(processes).length} total`;
@@ -84,6 +84,13 @@ inp.onsubmit = (e) => {
 	out.innerHTML += `<p>${output}</p><br/>`;
 
 	return false;
+}
+
+class Process {
+	constructor(p = -1, name = "null", desc = "null") {
+		this.name = name;
+		this.desc = desc;
+	}
 }
 
 function utilRINT(min, max) {
