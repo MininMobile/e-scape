@@ -77,6 +77,10 @@ inp.onsubmit = (e) => {
 			}
 			break;
 
+		case "clear":
+			out.innerHTML = "";
+			break;
+
 		default:
 			output = `Invalid command "${args[0]}" specified.`;
 	}
