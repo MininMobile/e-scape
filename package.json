@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MininMobile/e-scape/issues"
   },
-  "homepage": "https://github.com/MininMobile/e-scape#readme"
+  "homepage": "https://github.com/MininMobile/e-scape#readme",
+  "dependencies": {
+    "electron": "^2.0.5"
+  }
 }
