@@ -18,6 +18,8 @@ body {
 	width: calc(100% - 1em);
 	height: calc(100% - 1em);
 	padding: 0.5em;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }
 
 * {
@@ -39,6 +41,8 @@ input[type=text] {
 
 p {
 	margin: 0;
+	width: 100%;
+	word-wrap: break-word;
 }
 
 .in {

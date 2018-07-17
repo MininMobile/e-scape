@@ -7,12 +7,13 @@ document.body.onclick = (e) => inf.focus();
 
 inp.onsubmit = (e) => {
 	let args = inf.value.split(" ");
+	let output = "";
 
-	out.innerHTML += `${inl.innerText} ${inf.value}`
+	out.innerHTML += `<p>${inl.innerText} ${inf.value}</p>`
 
 	inf.value = "";
 
-	out.innerHTML += `<p>${args.join(", ")}</p><br>`;
+	out.innerHTML += `<p>${output}</p><br/>`;
 
 	return false;
 }
