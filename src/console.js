@@ -3,9 +3,13 @@ let inp = document.getElementById("inform");
 let inf = document.getElementById("in");
 let inl = document.getElementById("path");
 
+let chistory = [];
+
 document.body.onclick = (e) => inf.focus();
 
 inp.onsubmit = (e) => {
+	chistory.push(inf.value);
+
 	let args = inf.value.split(" ");
 	let output = "";
 
