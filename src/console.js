@@ -1,11 +1,16 @@
-let out;
-let inf;
-let inl;
+let out = document.getElementById("output");
+let inp = document.getElementById("inform");
+let inf = document.getElementById("in");
+let inl = document.getElementById("path");
 
-function onload() {
-	out = document.getElementById("output");
-	inf = document.getElementById("in");
-	inl = document.getElementById("path");
+document.body.onclick = (e) => inf.focus();
 
-	document.body.onclick = (e) => inf.focus();
+inp.onsubmit = (e) => {
+	let args = inf.value.split(" ");
+
+	inf.value = "";
+
+	out.innerHTML += `<p>${args.join(", ")}</p>`;
+
+	return false;
 }
