@@ -1,0 +1,39 @@
+@font-face {
+	font-family: "ubuntumono";
+	src: url("./font/ubuntumono.ttf");
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+body {
+	width: calc(100% - 1em);
+	height: calc(100% - 1em);
+	padding: 0.5em;
+}
+
+* {
+	background: #111;
+	color: #ddd;
+	font-family: "ubuntumono";
+	cursor: text;
+}
+
+form {
+	width: 100%;
+	display: flex;
+}
+
+input[type=text] {
+	flex: 1;
+}
+
+.in {
+	padding-left: 0.5em;
+	border: none;
+	outline: none;
+}
