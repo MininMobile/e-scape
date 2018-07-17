@@ -3,6 +3,7 @@ let inp = document.getElementById("inform");
 let inf = document.getElementById("in");
 let inl = document.getElementById("path");
 
+let processes = {};
 let chistory = [];
 let historyi = -1;
 
@@ -46,8 +47,16 @@ inp.onsubmit = (e) => {
 	switch (args[0]) {
 		case "echo":
 			args.shift();
-			
+
 			output = args.join(" ");
+			break;
+
+		case "ps":
+			Object.keys(processes).forEach((process) => {
+				output += `${process} | ${processes[process].name} | ${processes[process].description}</p><p>`;
+			});
+
+			output += `${Object.keys(processes).length} total`;
 			break;
 
 		default:
