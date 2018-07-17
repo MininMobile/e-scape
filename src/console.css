@@ -1,3 +1,7 @@
+:root {
+	--font-size: 1em;
+}
+
 @font-face {
 	font-family: "ubuntumono";
 	src: url("./font/ubuntumono.ttf");
@@ -19,6 +23,7 @@ body {
 * {
 	background: #111;
 	color: #ddd;
+	font-size: var(--font-size);
 	font-family: "ubuntumono";
 	cursor: text;
 }
@@ -30,6 +35,10 @@ form {
 
 input[type=text] {
 	flex: 1;
+}
+
+p {
+	margin: 0;
 }
 
 .in {
