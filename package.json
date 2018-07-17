@@ -1,0 +1,19 @@
+{
+  "name": "e-scape",
+  "version": "1.0.0",
+  "description": "A \"hacker\" game where you have to escape from a terminal-based system.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MininMobile/e-scape.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MininMobile/e-scape/issues"
+  },
+  "homepage": "https://github.com/MininMobile/e-scape#readme"
+}
