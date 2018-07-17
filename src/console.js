@@ -51,12 +51,30 @@ inp.onsubmit = (e) => {
 			output = args.join(" ");
 			break;
 
+		case "newp":
+			let id = 0;
+
+			while (Object.keys(processes).includes(id)) {
+				id = utilRINT(0, 255);
+			}
+
+			process[id] = new Process();
+			break;
+
 		case "ps":
-			Object.keys(processes).forEach((process) => {
-				output += `${process} | ${processes[process].name} | ${processes[process].description}</p><p>`;
+			Object.keys(processes).forEach((p) => {
+				output += `${p} | ${processes[p].name} | ${processes[p].description}</p><p>`;
 			});
 
 			output += `${Object.keys(processes).length} total`;
+			break;
+
+		case "kill":
+			if (Object.keys(processes).includes(args[1])) {
+				processes[args[1]].kill();
+			} else {
+				output = `kill: Invalid process id "${args[0]}" specified.`;
+			}
 			break;
 
 		default:
@@ -66,4 +84,8 @@ inp.onsubmit = (e) => {
 	out.innerHTML += `<p>${output}</p><br/>`;
 
 	return false;
+}
+
+function utilRINT(min, max) {
+	return Math.floor(Math.random() * max) + min;
 }
