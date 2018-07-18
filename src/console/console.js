@@ -38,7 +38,7 @@ inp.onsubmit = (e) => {
 	chistory.push(inf.value);
 	historyi = -1;
 
-	let args = inf.value.split(" ");
+	let args = inf.value.split(" "); if (args[0]) args[0] = args[0].toLowerCase();
 	let output = "";
 
 	out.innerHTML += `<p>${inl.innerText} ${inf.value}</p>`;
@@ -67,6 +67,8 @@ class Process {
 
 class Command {
 	constructor(action = (args) => {}, desc = "null") {
+		this.desc = desc;
+
 		this.ev = {};
 		this.ev.command = action;
 	}
@@ -82,6 +84,18 @@ class Command {
 		}
 	}
 }
+
+commands.help = new Command((args) => {
+	if (args[1]) {
+		if (Object.keys(commands).includes(args[1])) {
+			return `${args[1]}: ${commands[args[1]].desc}`;
+		} else {
+			return `help: Invalid command "${args[1]}" specified.`;
+		}
+	}
+
+	return Object.keys(commands).join("</p><p>");
+}, "List commands or display help for a command");
 
 commands.echo = new Command((args) => {
 	args.shift();
@@ -106,7 +120,7 @@ commands.kill = new Command((args) => {
 	}
 
 	return `kill: Invalid process id "${args[1]}" specified.`;
-});
+}, "Kills a process");
 
 commands.ps = new Command((args) => {
 	let output = "";
@@ -118,7 +132,7 @@ commands.ps = new Command((args) => {
 	output += `${Object.keys(processes).length} total`;
 
 	return output;
-})
+}, "List active processes");
 
 commands.clear = new Command((args) => {
 	out.innerHTML = "";
