@@ -51,38 +51,6 @@ inp.onsubmit = (e) => {
 		output = `Invalid command "${args[0]}" specified.`;
 	}
 
-	switch (args[0]) {
-		case "newp":
-			let id = 0;
-
-			while (Object.keys(processes).includes(`${id}`)) {
-				id = utilRINT(0, 255);
-			}
-
-			processes[id] = new Process();
-			break;
-
-		case "ps":
-			Object.keys(processes).forEach((p) => {
-				output += `${p} | ${processes[p].name} | ${processes[p].desc}</p><p>`;
-			});
-
-			output += `${Object.keys(processes).length} total`;
-			break;
-
-		case "kill":
-			if (Object.keys(processes).includes(args[1])) {
-				processes[args[1]].kill();
-			} else {
-				output = `kill: Invalid process id "${args[0]}" specified.`;
-			}
-			break;
-
-		case "clear":
-			out.innerHTML = "";
-			break;
-	}
-
 	out.innerHTML += `<p>${output}</p><br/>`;
 
 	scroll(0, window.innerHeight);
@@ -119,6 +87,42 @@ commands.echo = new Command((args) => {
 	args.shift();
 	return args.join(" ");
 }, "Prints user specified text to output");
+
+commands.newp = new Command((args) => {
+	let id = 0;
+
+	while (Object.keys(processes).includes(`${id}`))
+		id = utilRINT(0, 255);
+
+	processes[id] = new Process();
+
+	return "";
+}, "Creates a new dummy process");
+
+commands.kill = new Command((args) => {
+	if (Object.keys(processes).includes(args[1])) {
+		delete processes[args[1]];
+		return "";
+	}
+
+	return `kill: Invalid process id "${args[1]}" specified.`;
+});
+
+commands.ps = new Command((args) => {
+	let output = "";
+
+	Object.keys(processes).forEach((p) => {
+		output += `${p} | ${processes[p].name} | ${processes[p].desc}</p><p>`;
+	});
+
+	output += `${Object.keys(processes).length} total`;
+
+	return output;
+})
+
+commands.clear = new Command((args) => {
+	out.innerHTML = "";
+}, "Clears output");
 
 function utilRINT(min, max) {
 	return Math.floor(Math.random() * max) + min;
