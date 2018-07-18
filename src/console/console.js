@@ -141,14 +141,23 @@ commands.clear = new Command((args) => {
 }, "Clears output");
 
 commands.save = new Command((args) => {
-	return save();
+	let savedata = utilGETDAT();
+	return save("game", savedata);
 }, "Save game");
 
 commands.exit = new Command((args) => {
-	save();
+	let savedata = utilGETDAT();
+	save("game", savedata);
 	window.location = "../menu/menu.html";
 	return "";
 }, "Save and go back to the main menu");
+
+function utilGETDAT() {
+	return {
+		display: out.innerHTML,
+		procs: processes
+	}
+}
 
 function utilRINT(min, max) {
 	return Math.floor(Math.random() * max) + min;

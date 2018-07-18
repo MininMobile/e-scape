@@ -3,11 +3,11 @@ const storage = require("electron-json-storage");
 module.exports = exports = (type, scope) => {
 	switch (type) {
 		case "game":
-			storage.set("game_progress", scope, console.error);
+			return storage.set("game_progress", scope, (err) => { if (err) return err; return "Success" });
 			break;
 
 		case "settings":
-			storage.set("game_settings", scope, console.error);
+			return storage.set("game_settings", scope, (err) => { if (err) return err; return "Success" });
 			break;
 
 		default:
