@@ -111,7 +111,7 @@ commands.newp = new Command((args) => {
 	processes[id] = new Process();
 
 	return "";
-}, "Creates a new dummy process");
+}, "Creates a new dummy process"); 
 
 commands.kill = new Command((args) => {
 	if (Object.keys(processes).includes(args[1])) {
@@ -137,6 +137,20 @@ commands.ps = new Command((args) => {
 commands.clear = new Command((args) => {
 	out.innerHTML = "";
 }, "Clears output");
+
+commands.save = new Command((args) => {
+	return save();
+}, "Save game");
+
+commands.exit = new Command((args) => {
+	save();
+	window.location = "../menu/menu.html";
+	return "";
+}, "Save and go back to the main menu");
+
+function save() {
+	// save game progress
+}
 
 function utilRINT(min, max) {
 	return Math.floor(Math.random() * max) + min;
