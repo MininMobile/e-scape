@@ -46,18 +46,12 @@ inp.onsubmit = (e) => {
 	inf.value = "";
 
 	if (Object.keys(commands).includes(args[0])) {
-		commands[args[0]].Call("command", args);
+		output = commands[args[0]].Call("command", args);
 	} else {
 		output = `Invalid command "${args[0]}" specified.`;
 	}
 
 	switch (args[0]) {
-		case "echo":
-			args.shift();
-
-			output = args.join(" ");
-			break;
-
 		case "newp":
 			let id = 0;
 
@@ -102,6 +96,29 @@ class Process {
 		this.desc = desc;
 	}
 }
+
+class Command {
+	constructor(action = (args) => {}, desc = "null") {
+		this.ev = {};
+		this.ev.command = action;
+	}
+
+	Call(event, scope) {
+		switch (event) {
+			case "command":
+				return this.ev.command(scope);
+				break;
+
+			default:
+				// error
+		}
+	}
+}
+
+commands.echo = new Command((args) => {
+	args.shift();
+	return args.join(" ");
+}, "Prints user specified text to output");
 
 function utilRINT(min, max) {
 	return Math.floor(Math.random() * max) + min;
