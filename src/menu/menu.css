@@ -38,19 +38,25 @@ body {
 	transition: margin-left 0.2s;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }
 
 .btn * {
 	margin: 0;
+	cursor: pointer;
 }
 
 .btn::before {
 	content: "";
-	background: #170;
 	width: 1em;
 	height: 100%;
 	margin-right: 0.5em;
 }
+
+.primary::before { background: #170; }
+.info::before { background: #139; }
+.gray::before { background: #555; }
+.warning::before { background: #931; }
 
 .btn:hover {
 	margin-left: 2em;
