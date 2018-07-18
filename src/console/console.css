@@ -17,13 +17,14 @@ html, body {
 body {
 	width: calc(100% - 1em);
 	height: calc(100% - 1em);
+	animation: fade 5s linear;
+	background: #111;
 	padding: 0.5em;
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
 
 * {
-	background: #111;
 	color: #ddd;
 	font-size: var(--font-size);
 	font-family: "ubuntumono";
@@ -36,6 +37,8 @@ form {
 }
 
 input[type=text] {
+	animation: fade 5s linear;
+	background: #111;
 	flex: 1;
 }
 
@@ -49,4 +52,9 @@ p {
 	padding-left: 0.5em;
 	border: none;
 	outline: none;
+}
+
+@keyframes fade {
+	from { background: #1c1c1c; }
+	to { background: #111; }
 }
