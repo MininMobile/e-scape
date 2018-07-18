@@ -1,3 +1,38 @@
 {
-	"_type": "dir"
+	"root": {
+		"_type": "dir",
+		"home": {
+			"_type": "dir",
+			"libraries": {
+				"_type": "dir",
+				"Productivity": {
+					"_type": "dir"
+				},
+				"Programming": {
+					"_type": "dir"
+				},
+				"Tools": {
+					"_type": "dir"
+				},
+				"Games": {
+					"_type": "dir"
+				}
+			}
+		},
+		"root": {
+			"_type": "dir"
+		},
+		"usr": {
+			"_type": "dir"
+		},
+		"log": {
+			"_type": "dir"
+		},
+		"bin": {
+			"_type": "dir"
+		},
+		"lib": {
+			"_type": "dir"
+		}
+	}
 }
