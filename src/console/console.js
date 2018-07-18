@@ -1,3 +1,5 @@
+const save = require("../modules/save");
+
 let out = document.getElementById("output");
 let inp = document.getElementById("inform");
 let inf = document.getElementById("in");
@@ -147,10 +149,6 @@ commands.exit = new Command((args) => {
 	window.location = "../menu/menu.html";
 	return "";
 }, "Save and go back to the main menu");
-
-function save() {
-	// save game progress
-}
 
 function utilRINT(min, max) {
 	return Math.floor(Math.random() * max) + min;
