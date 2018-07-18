@@ -5,8 +5,9 @@ let inp = document.getElementById("inform");
 let inf = document.getElementById("in");
 let inl = document.getElementById("path");
 
-let commands = {};
-let processes = {};
+let hdd = require("./hdd.json");
+let commands = { };
+let processes = { };
 let chistory = [];
 let historyi = -1;
 
@@ -14,13 +15,13 @@ storage.has("game_progress", (err, key) => {
 	if (err) return console.error(err);
 
 	if (key) {
-		storage.get("game_progress", (err, data) => { utilSAVDAT(data); });
+		storage.get("game_progress", (err, data) => { utilSAVDAT(data) });
 	} else {
 		storage.set("game_progress", utilGETDAT(), (err) => { })
 	}
 });
 
-document.onclick = (e) => inf.focus();
+document.onclick = (e) => { inf.focus() };
 
 document.onkeydown = (e) => {
 	if (historyi == -1)  historyi = chistory.length;
@@ -165,11 +166,13 @@ commands.exit = new Command((args) => {
 
 function utilGETDAT() {
 	return {
+		hdd: hdd,
 		procs: processes
 	}
 }
 
 function utilSAVDAT(data) {
+	hdd = data.hdd;
 	processes = data.procs;
 }
 
