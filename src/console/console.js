@@ -3,6 +3,7 @@ let inp = document.getElementById("inform");
 let inf = document.getElementById("in");
 let inl = document.getElementById("path");
 
+let commands = {};
 let processes = {};
 let chistory = [];
 let historyi = -1;
@@ -44,6 +45,12 @@ inp.onsubmit = (e) => {
 
 	inf.value = "";
 
+	if (Object.keys(commands).includes(args[0])) {
+		commands[args[0]].Call("command", args);
+	} else {
+		output = `Invalid command "${args[0]}" specified.`;
+	}
+
 	switch (args[0]) {
 		case "echo":
 			args.shift();
@@ -80,9 +87,6 @@ inp.onsubmit = (e) => {
 		case "clear":
 			out.innerHTML = "";
 			break;
-
-		default:
-			output = `Invalid command "${args[0]}" specified.`;
 	}
 
 	out.innerHTML += `<p>${output}</p><br/>`;
