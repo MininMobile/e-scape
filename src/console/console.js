@@ -165,13 +165,11 @@ commands.exit = new Command((args) => {
 
 function utilGETDAT() {
 	return {
-		display: out.innerHTML,
 		procs: processes
 	}
 }
 
 function utilSAVDAT(data) {
-	out.innerHTML = data.display;
 	processes = data.procs;
 }
 
