@@ -15,8 +15,10 @@ let historyi = -1;
 storage.has("game_progress", (err, key) => {
 	if (err) return console.error(err);
 
+	console.log(key);
+
 	if (key) {
-		utilSAVDAT(load("game"));
+		load("game").then((data, err) => { utilSAVDAT(data); });
 	} else {
 		save("game", utilGETDAT());
 	}
@@ -153,15 +155,14 @@ commands.clear = new Command((args) => {
 }, "Clears output");
 
 commands.save = new Command((args) => {
-	let savedata = utilGETDAT();
-	return save("game", savedata);
+	save("game", utilGETDAT()).then((e, data) => { return data });
 }, "Save game");
 
 commands.exit = new Command((args) => {
-	let savedata = utilGETDAT();
-	save("game", savedata);
-	window.location = "../menu/menu.html";
-	return "";
+	save("game", utilGETDAT()).then((e, data) => {
+		window.location = "../menu/menu.html";
+		return "";
+	});
 }, "Save and go back to the main menu");
 
 function utilGETDAT() {
@@ -171,9 +172,9 @@ function utilGETDAT() {
 	}
 }
 
-function utilSAVDAT(dat) {
-	out.innerHTML = dat.display;
-	processes = dat.procs;
+function utilSAVDAT(data) {
+	out.innerHTML = data.display;
+	processes = data.procs;
 }
 
 function utilRINT(min, max) {
