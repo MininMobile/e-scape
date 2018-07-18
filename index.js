@@ -13,13 +13,14 @@ function createWindow() {
 		slashes: true
 	}));
 
-	win.setSize(800, 600);
+	win.setBackgroundColor("#1c1c1c");
+
+	win.setMinimumSize(800, 600);
 	win.setResizable(true);
+
 	win.focus();
 
-	win.on("closed", () => {
-		app.quit();
-	});
+	win.on("closed", app.quit);
 }
 
 app.on("window-all-closed", () => { app.quit(); });
