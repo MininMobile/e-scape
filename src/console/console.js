@@ -1,6 +1,4 @@
 const storage = require("electron-json-storage");
-const save = require("../modules/save");
-const load = require("../modules/load");
 
 let out = document.getElementById("output");
 let inp = document.getElementById("inform");
@@ -15,14 +13,12 @@ let historyi = -1;
 storage.has("game_progress", (err, key) => {
 	if (err) return console.error(err);
 
-	console.log(key);
-
 	if (key) {
-		load("game").then((data, err) => { utilSAVDAT(data); });
+		storage.get("game_progress", (err, data) => { utilSAVDAT(data); });
 	} else {
-		save("game", utilGETDAT());
+		storage.set("game_progress", utilGETDAT(), (err) => { })
 	}
-})
+});
 
 document.onclick = (e) => inf.focus();
 
@@ -152,17 +148,19 @@ commands.ps = new Command((args) => {
 
 commands.clear = new Command((args) => {
 	out.innerHTML = "";
+	return "";
 }, "Clears output");
 
 commands.save = new Command((args) => {
-	save("game", utilGETDAT()).then((e, data) => { return data });
+	storage.set("game_progress", utilGETDAT(), (err) => { });
+	return "";
 }, "Save game");
 
 commands.exit = new Command((args) => {
-	save("game", utilGETDAT()).then((e, data) => {
+	storage.set("game_progress", utilGETDAT(), (err) => {
 		window.location = "../menu/menu.html";
-		return "";
 	});
+	return "";
 }, "Save and go back to the main menu");
 
 function utilGETDAT() {
