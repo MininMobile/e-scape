@@ -6,6 +6,9 @@ let inf = document.getElementById("in");
 let inl = document.getElementById("path");
 
 let hdd = require("./hdd.json");
+let loc = ["root"];
+let current = hdd["root"];
+
 let commands = { };
 let processes = { };
 let chistory = [];
@@ -163,6 +166,44 @@ commands.exit = new Command((args) => {
 	});
 	return "";
 }, "Save and go back to the main menu");
+
+function cd(dir) {
+	if (dir == "..") {
+		if (loc.length > 1) {
+			loc.pop();
+		}
+	} else {
+		loc.push(dir);
+	}
+
+	update();
+}
+
+function cdlist(navto) {
+	loc = [];
+
+	navto.forEach((dir) => {
+		loc.push(dir);
+	});
+
+	update();
+}
+
+function update() {
+	let x = true;
+	do {
+		current = dll.hdd.fs;
+		loc.forEach((dir) => {
+			current = current[dir];
+		});
+
+		if (current.type != "dir") {
+			loc.pop();
+		} else {
+			x = false;
+		}
+	} while (x)
+}
 
 function utilGETDAT() {
 	return {
