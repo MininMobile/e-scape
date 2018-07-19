@@ -7,7 +7,7 @@ let inl = document.getElementById("path");
 
 let hdd = require("./hdd.json");
 let loc = ["root"];
-let current = hdd["root"];
+let curdir = hdd["root"];
 
 let commands = { };
 let processes = { };
@@ -160,6 +160,21 @@ commands.save = new Command((args) => {
 	return "";
 }, "Save game");
 
+commands.ls = commands.dir = new Command((args) => {
+	let output = "";
+	let items = Object.keys(curdir); items.shift();
+
+	items.forEach((item) => {
+		let type = curdir[item]["_type"].toUpperCase();
+
+		output += `${type} ${item}</p><p>`;
+	});
+
+	output += `${items.length} items`;
+
+	return output;
+});
+
 commands.exit = new Command((args) => {
 	storage.set("game_progress", utilGETDAT(), (err) => {
 		window.location = "../menu/menu.html";
@@ -192,12 +207,12 @@ function cdlist(navto) {
 function update() {
 	let x = true;
 	do {
-		current = dll.hdd.fs;
+		curdir = dll.hdd.fs;
 		loc.forEach((dir) => {
-			current = current[dir];
+			curdir = curdir[dir];
 		});
 
-		if (current.type != "dir") {
+		if (curdir.type != "dir") {
 			loc.pop();
 		} else {
 			x = false;
