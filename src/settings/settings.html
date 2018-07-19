@@ -11,12 +11,12 @@
 </head>
 
 <body>
-	<div class="menucont">
+	<div id="mainmenu" class="menucont">
 		<div class="title">
 			<h1 class="glitch" data-text="sctt.nGs">Settings</h1>
 		</div>
 		<div class="options">
-			<div class="btn warning" onclick="format_show()"><p>Format</p></div>
+			<div class="btn warning" onclick="menu_hide(); format_show()"><p>Format</p></div>
 			<div class="btn info" onclick="back()"><p>Back</p></div>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 		</div>
 		<div class="options">
 			<div class="btn warning" onclick="format()"><p>Yes</p></div>
-			<div class="btn gray" onclick="format_hide()"><p>No</p></div>
+			<div class="btn gray" onclick="menu_show(); format_hide()"><p>No</p></div>
 		</div>
 	</div>
 </body>

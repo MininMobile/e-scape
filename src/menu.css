@@ -33,12 +33,14 @@ body {
 .menucont {
 	width: 60%;
 	height: 60%;
+	transition: opacity 1s, left 1s, right 1s;
+	position: absolute;
+	opacity: 1;
+	left: 20vw;
 }
 
 .overlay {
 	background: #1c1c1c;
-	position: absolute;
-	transition: opacity 1s, left 1s;
 	opacity: 0;
 	left: 100vw;
 }
@@ -46,6 +48,11 @@ body {
 .overlay-show {
 	opacity: 1;
 	left: 20vw;
+}
+
+.base-hide {
+	opacity: 0;
+	left: -100vw;
 }
 
 .title h1 {
