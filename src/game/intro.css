@@ -53,9 +53,13 @@ body {
 }
 
 @keyframes blink {
-	0% { }
+	0% {
+		color: currentColor;
+	}
 
-	49% { }
+	49% {
+		color: currentColor;
+	}
 	50% {
 		color: transparent;
 	}
