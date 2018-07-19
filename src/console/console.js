@@ -17,11 +17,11 @@ storage.has("game_progress", (err, key) => {
 	if (key) {
 		storage.get("game_progress", (err, data) => { utilSAVDAT(data) });
 	} else {
-		storage.set("game_progress", utilGETDAT(), (err) => { })
+		storage.set("game_progress", utilGETDAT(), (err) => { });
 	}
 });
 
-document.onclick = (e) => { inf.focus() };
+document.onclick = (e) => { inf.focus() }
 
 document.onkeydown = (e) => {
 	if (historyi == -1)  historyi = chistory.length;
@@ -178,4 +178,16 @@ function utilSAVDAT(data) {
 
 function utilRINT(min, max) {
 	return Math.floor(Math.random() * max) + min;
+}
+
+function utilISROOT(loc) {
+	if (loc.length == 1 && loc[0] == "root") return true
+
+	return false
+}
+
+function utilISEMPTY(loc) {
+	if (loc.length == 0) return true
+	
+	return false
 }
