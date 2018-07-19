@@ -3,20 +3,17 @@
 		"_type": "dir",
 		"home": {
 			"_type": "dir",
-			"libraries": {
-				"_type": "dir",
-				"Productivity": {
-					"_type": "dir"
-				},
-				"Programming": {
-					"_type": "dir"
-				},
-				"Tools": {
-					"_type": "dir"
-				},
-				"Games": {
-					"_type": "dir"
-				}
+			"Documents": {
+				"_type": "dir"
+			},
+			"Pictures": {
+				"_type": "dir"
+			},
+			"Videos": {
+				"_type": "dir"
+			},
+			"Music": {
+				"_type": "dir"
 			}
 		},
 		"root": {
@@ -33,6 +30,10 @@
 		},
 		"lib": {
 			"_type": "dir"
+		},
+		"pass.txt": {
+			"_type": "file",
+			"content": "1234"
 		}
 	}
 }
