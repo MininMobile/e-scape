@@ -89,7 +89,7 @@ body {
 	margin: 0.5em;
 	padding: 0.2em;
 	background: rgba(255, 255, 255, 0.1);
-	transition: margin-left 0.2s;
+	transition: margin-left 0.22s;
 	display: flex;
 	align-items: center;
 }
