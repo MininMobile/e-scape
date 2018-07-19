@@ -161,7 +161,11 @@ commands.save = new Command((args) => {
 }, "Save game");
 
 commands.cd = new Command((args) => {
+	if (args[1] == undefined) return "cd: Enter a directory"
+
 	cd(args[1]);
+
+	loc[0] = "~"; inl.innerText = `${loc.join("/")}/ $`; loc[0] = "root";
 	return "";
 }, "Change directory, use '..' to go up")
 
@@ -214,7 +218,11 @@ function update() {
 	do {
 		curdir = hdd;
 		loc.forEach((dir) => {
-			curdir = curdir[dir];
+			if (curdir[dir] == undefined) {
+				loc.pop();
+			} else {
+				curdir = curdir[dir];
+			}
 		});
 
 		if (curdir["_type"] != "dir") {
