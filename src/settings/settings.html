@@ -16,8 +16,17 @@
 			<h1 class="glitch" data-text="sctt.nGs">Settings</h1>
 		</div>
 		<div class="options">
-			<div class="btn warning" onclick="reset()"><p>Format</p></div>
+			<div class="btn warning" onclick="format_show()"><p>Format</p></div>
 			<div class="btn info" onclick="back()"><p>Back</p></div>
+		</div>
+	</div>
+	<div id="dialog_format" class="menucont overlay">
+		<div class="title">
+			<h1 class="glitch" data-text="coNfirn forMat?">Confirm Format!</h1>
+		</div>
+		<div class="options">
+			<div class="btn warning" onclick="format()"><p>Yes</p></div>
+			<div class="btn gray" onclick="format_hide()"><p>No</p></div>
 		</div>
 	</div>
 </body>

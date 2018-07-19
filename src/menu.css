@@ -12,6 +12,7 @@ html, body {
 	padding: 0;
 	width: 100vw;
 	height: 100vh;
+	overflow: hidden;
 }
 
 body {
@@ -32,6 +33,19 @@ body {
 .menucont {
 	width: 60%;
 	height: 60%;
+}
+
+.overlay {
+	background: #1c1c1c;
+	position: absolute;
+	transition: opacity 1s, left 1s;
+	opacity: 0;
+	left: 100vw;
+}
+
+.overlay-show {
+	opacity: 1;
+	left: 20vw;
 }
 
 .title h1 {

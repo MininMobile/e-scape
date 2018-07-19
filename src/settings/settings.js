@@ -1,20 +1,14 @@
 const storage = require("electron-json-storage");
 const { dialog } = require('electron').remote;
 
-function reset() {
-	dialog.showMessageBox({
-		type: "warning",
-		buttons: ["Ok", "Cancel"],
-		title: "e SCAPe",
-		message: "PRESSING OK WILL DELETE ALL SAVED DATA"
-	}, (i) => {
-		if (i == 0) {
-			storage.clear();
-			utilALERT("Saves Wiped");
-		} else {
-			utilALERT("Action Cancelled");
-		}
-	});
+let _formatDialog = document.getElementById("dialog_format")
+
+function format_show() { _formatDialog.classList.add("overlay-show"); }
+function format_hide() { _formatDialog.classList.remove("overlay-show"); }
+
+function format() {
+	storage.clear();
+	format_hide();
 }
 
 function back() {
