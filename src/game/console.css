@@ -17,7 +17,7 @@ html, body {
 body {
 	width: calc(100% - 1em);
 	height: calc(100% - 1em);
-	background: #111;
+	background: #1c1c1c;
 	padding: 0.5em;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -36,7 +36,7 @@ form {
 }
 
 input[type=text] {
-	background: #111;
+	background: #1c1c1c;
 	flex: 1;
 }
 

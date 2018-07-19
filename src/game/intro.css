@@ -2,9 +2,13 @@
 	--font-size: 1em;
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 @font-face {
 	font-family: "ubuntumono";
-	src: url("font/ubuntumono.ttf");
+	src: url("../font/ubuntumono.ttf");
 }
 
 html, body {
@@ -12,33 +16,46 @@ html, body {
 	padding: 0;
 	width: 100vw;
 	height: 100vh;
-	overflow: hidden;
 }
 
 body {
 	background: #1c1c1c;
 	color: #ddd;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	font-family: "ubuntumono";
 	font-size: var(--font-size);
 }
 
+* {
+	user-select: none;
+	cursor: default;
+}
+
+.lore {
+	margin: 1em;
+}
+
 .lore::after {
 	content: "_";
-	color: #ddd;
-	animation: blink 2s infinite;
+	animation: blink 1s infinite;
+}
+
+.noblink::after {
+	content: "";
+	animation: none;
+}
+
+.red {
+	color: #930;
+}
+
+.blue {
+	color: #039;
 }
 
 @keyframes blink {
-	0% {
-		color: #ddd;
-	}
+	0% { }
 
-	49% {
-		color: #ddd;
-	}
+	49% { }
 	50% {
 		color: transparent;
 	}
