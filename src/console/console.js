@@ -5,7 +5,7 @@ let inp = document.getElementById("inform");
 let inf = document.getElementById("in");
 let inl = document.getElementById("path");
 
-let hdd = require("./hdd.json");
+hdd = require("./hdd.json");
 let loc = ["root"];
 let curdir = hdd["root"];
 
@@ -160,6 +160,11 @@ commands.save = new Command((args) => {
 	return "";
 }, "Save game");
 
+commands.cd = new Command((args) => {
+	cd(args[1]);
+	return "";
+}, "Change directory, use '..' to go up")
+
 commands.ls = commands.dir = new Command((args) => {
 	let output = "";
 	let items = Object.keys(curdir); items.shift();
@@ -173,7 +178,7 @@ commands.ls = commands.dir = new Command((args) => {
 	output += `${items.length} items`;
 
 	return output;
-});
+}, "List all files and folders in current directory");
 
 commands.exit = new Command((args) => {
 	storage.set("game_progress", utilGETDAT(), (err) => {
@@ -184,7 +189,7 @@ commands.exit = new Command((args) => {
 
 function cd(dir) {
 	if (dir == "..") {
-		if (loc.length > 1) {
+		if (loc.length != 1) {
 			loc.pop();
 		}
 	} else {
@@ -207,12 +212,12 @@ function cdlist(navto) {
 function update() {
 	let x = true;
 	do {
-		curdir = dll.hdd.fs;
+		curdir = hdd;
 		loc.forEach((dir) => {
 			curdir = curdir[dir];
 		});
 
-		if (curdir.type != "dir") {
+		if (curdir["_type"] != "dir") {
 			loc.pop();
 		} else {
 			x = false;
