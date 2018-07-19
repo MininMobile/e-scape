@@ -33,7 +33,7 @@ body {
 .menucont {
 	width: 60%;
 	height: 60%;
-	transition: opacity 1s, left 1s, right 1s;
+	transition: opacity 0.7s, left 0.7s, right 0.7s;
 	position: absolute;
 	opacity: 1;
 	left: 20vw;
