@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="../menu.css" />
 	<script defer src="menu.js"></script>
-	<script defer src="settings.js"></script>
 
 	<title>e SCAPe</title>
 </head>
@@ -18,9 +17,36 @@
 		</div>
 		<div class="options">
 			<div class="btn gray" onclick="play()"><p>Play</p></div>
-			<div class="btn gray" onclick="settings()"><p>Options</p></div>
+			<div class="btn gray" onclick="hide_menu(); show_dialog(d.settings)"><p>Options</p></div>
 			<div class="btn warning" onclick="exit()"><p>Exit</p></div>
 		</div>
 	</div>
+
+	<div id="dialog_settings" class="menucont overlay">
+		<div class="title">
+			<h1 class="glitch" data-text="Settings">Settings</h1>
+		</div>
+		<div class="options">
+			<div class="btn warning" onclick="hidel_dialog(d.settings); show_dialog(d.format)"><p>Format</p></div>
+			<div class="btn info" onclick="hide_dialog(d.settings); show_menu();"><p>Back</p></div>
+		</div>
+	</div>
+
+	<div id="dialog_format" class="menucont overlay">
+		<div class="title">
+			<h1 class="glitch" data-text="Confirm Format?">Confirm Format?</h1>
+		</div>
+		<div class="options">
+			<div class="btn warning" onclick="format()"><p>Yes</p></div>
+			<div class="btn gray" onclick="showl_dialog(d.settings); hide_dialog(d.format)"><p>No</p></div>
+		</div>
+	</div>
+
+	<script>
+		let d = {};
+
+		d.settings = document.getElementById("dialog_settings");
+		d.format = document.getElementById("dialog_format");
+	</script>
 </body>
 </html>
