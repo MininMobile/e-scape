@@ -1,0 +1,49 @@
+:root {
+	--font-size: 1em;
+}
+
+@font-face {
+	font-family: "ubuntumono";
+	src: url("font/ubuntumono.ttf");
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+body {
+	background: #1c1c1c;
+	color: #ddd;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "ubuntumono";
+	font-size: var(--font-size);
+}
+
+.lore::after {
+	content: "_";
+	color: #ddd;
+	animation: blink 2s infinite;
+}
+
+@keyframes blink {
+	0% {
+		color: #ddd;
+	}
+
+	49% {
+		color: #ddd;
+	}
+	50% {
+		color: transparent;
+	}
+
+	100% {
+		color: transparent;
+	}
+}
