@@ -175,6 +175,19 @@ commands.cat = new Command((args) => {
 	}
 }, "Read the contents of a file");
 
+commands.rm = new Command((args) => {
+	if (args[1] == undefined) return "rm: Enter a path";
+
+	args.shift();
+	let path = args.join(" ");
+
+	if (curdir[path] != undefined) {
+		delete curdir[path];
+	} else {
+		return "rm: Invalid path"
+	}
+}, "Delete a file or a folder");
+
 commands.cd = new Command((args) => {
 	if (args[1] == undefined) return "cd: Enter a directory";
 
