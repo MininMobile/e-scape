@@ -102,15 +102,13 @@ class Command {
 }
 
 commands.help = new Command((args) => {
-	if (args[1]) {
-		if (Object.keys(commands).includes(args[1])) {
-			return `${args[1]}: ${commands[args[1]].desc}`;
-		} else {
-			return `help: Invalid command "${args[1]}" specified.`;
-		}
-	}
+	let output = "";
 
-	return Object.keys(commands).join("</p><p>");
+	Object.keys(commands).forEach((command) => {
+		output += `${command}: ${commands[command].desc}</p><p>`;
+	});
+
+	return output;
 }, "List commands or display help for a command");
 
 commands.echo = new Command((args) => {
@@ -161,13 +159,13 @@ commands.save = new Command((args) => {
 }, "Save game");
 
 commands.cd = new Command((args) => {
-	if (args[1] == undefined) return "cd: Enter a directory"
+	if (args[1] == undefined) return "cd: Enter a directory";
 
 	cd(args[1]);
 
 	loc[0] = "~"; inl.innerText = `${loc.join("/")}/ $`; loc[0] = "root";
 	return "";
-}, "Change directory, use '..' to go up")
+}, "Change directory, use '..' to go up");
 
 commands.ls = commands.dir = new Command((args) => {
 	let output = "";
