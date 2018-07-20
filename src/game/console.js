@@ -158,6 +158,23 @@ commands.save = new Command((args) => {
 	return "";
 }, "Save game");
 
+commands.cat = new Command((args) => {
+	if (args[1] == undefined) return "cat: Enter a file name";
+
+	args.shift();
+	let path = args.join(" ");
+
+	if (curdir[path] != undefined) {
+		if (curdir[path]["_type"] == "file") {
+			return curdir[path].content;
+		} else {
+			return "cat: Path is not a file";
+		}
+	} else {
+		return "cat: Invalid file path"
+	}
+}, "Read the contents of a file");
+
 commands.cd = new Command((args) => {
 	if (args[1] == undefined) return "cd: Enter a directory";
 
